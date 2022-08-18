@@ -16,9 +16,7 @@ class _AppState extends State<App> {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const Scaffold(
-        body: HomeScreen(),
-      ),
+      home: const HomeScreen(),
     );
   }
 }
