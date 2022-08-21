@@ -1,6 +1,7 @@
 import 'package:game_tetris/core/db/db_core.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-
+final audioLocalProvider = Provider<AudioLocal>(((ref) => AudioLocalImpl()));
 
 abstract class AudioLocal extends DBCore {
   bool get isMuted;
