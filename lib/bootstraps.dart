@@ -15,8 +15,8 @@ void bootstraps(Widget app) async {
 
   runApp(
     ProviderScope(
-      overrides: const [
-        // audioLocalProvider.overrideWithValue(audioLocal),
+      overrides: [
+        audioLocalProvider.overrideWithValue(audioLocal),
       ],
       child: Portal(child: app),
     ),

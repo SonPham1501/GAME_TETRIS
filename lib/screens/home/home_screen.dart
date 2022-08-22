@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:game_tetris/material/audios/repositories/button_audio_controller.dart';
 import 'package:game_tetris/screens/home/controller/home_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -15,6 +16,7 @@ class HomeScreen extends ConsumerWidget {
         children: [
           Center(child: Text(count.toString())),
           TextButton(onPressed: () {
+            ref.read(buttonAudioControllerProvider).move();
             ref.read(counterProvider).increment();
           }, child: const Text('Click')),
           TextButton(onPressed: () {
