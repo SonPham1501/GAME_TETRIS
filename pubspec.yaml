@@ -30,6 +30,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #color theme
+  flex_color_scheme: ^4.1.1
+
   #multi-language
   flutter_localizations:
     sdk: flutter
@@ -94,12 +97,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: kenvector_future
+      fonts:
+        - asset: assets/fonts/kenvector_future.ttf
+        - asset: assets/fonts/kenvector_future_thin.ttf
+          weight: 300
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
