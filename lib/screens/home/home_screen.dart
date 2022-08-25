@@ -21,12 +21,23 @@ class HomeScreen extends HookConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(child: Text(count.toString())),
-          TextButton(onPressed: () async {
-            ref.read(counterProvider).increment();
-          }, child: const Text('Click')),
-          TextButton(onPressed: () {
-            ref.refresh(counterProvider);
-          }, child: const Text('Refresh')),
+          const SizedBox(height: 20),
+          GameButton(
+            color: ButtonColors.green,
+            child: const Text('Increment'),
+            onPressed: () {
+              ref.read(counterProvider).increment();
+            },
+          ),
+          const SizedBox(height: 20),
+          GameButton(
+            color: ButtonColors.blue,
+            child: const Text('Refesh'),
+            onPressed: () {
+              ref.refresh(counterProvider);
+            },
+          ),
+          const SizedBox(height: 20),
           GameButton(
             color: ButtonColors.red,
             child: const Text('Phạm Thế Sơn'),
