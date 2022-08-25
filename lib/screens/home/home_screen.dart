@@ -1,8 +1,14 @@
 
 
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:game_tetris/screens/home/controller/home_controller.dart';
+import 'package:game_tetris/widgets/buttons/game_button.dart';
+import 'package:game_tetris/widgets/buttons/models/buttons_params.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({ Key? key }) : super(key: key);
@@ -21,6 +27,11 @@ class HomeScreen extends HookConsumerWidget {
           TextButton(onPressed: () {
             ref.refresh(counterProvider);
           }, child: const Text('Refresh')),
+          GameButton(
+            color: ButtonColors.red,
+            child: const Text('Phạm Thế Sơn'),
+            onPressed: () {log('ss');},
+          ),
         ],
       ),
     );
