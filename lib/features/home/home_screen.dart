@@ -1,13 +1,15 @@
 
 
 
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:game_tetris/screens/home/controller/home_controller.dart';
+import 'package:game_tetris/material/app_setting/app_setting_controller.dart';
 import 'package:game_tetris/widgets/buttons/game_button.dart';
 import 'package:game_tetris/widgets/buttons/models/buttons_params.dart';
+import 'package:game_tetris/widgets/theme_setting_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'controller/home_controller.dart';
 
 
 class HomeScreen extends HookConsumerWidget {
@@ -41,8 +43,12 @@ class HomeScreen extends HookConsumerWidget {
           GameButton(
             color: ButtonColors.red,
             child: const Text('Phạm Thế Sơn'),
-            onPressed: () {log('ss');},
+            onPressed: () {
+              final bool isDark = ref.watch(appSettingControllerProvider.select((value) => value.isDarkTheme));
+              ref.read(appSettingControllerProvider).isDarkTheme = !isDark;
+            },
           ),
+          const ThemeSettingBar(),
         ],
       ),
     );
