@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:game_tetris/core/db.dart';
 import 'package:game_tetris/widgets/buttons/buttons.dart';
 
-final playboardProvider = Provider<PlayboardLocal>((ref) => PlayboardLocalImpl());
+final playboardLocalProvider = Provider<PlayboardLocal>((ref) => PlayboardLocalImpl());
 
 abstract class PlayboardLocal extends DBCore {
   ButtonColors get buttonColor;

@@ -26,7 +26,7 @@ void bootstraps(Widget app) async {
       overrides: [
         audioLocalProvider.overrideWithValue(audioLocal),
         appSettingLocalProvider.overrideWithValue(appSettingLocal),
-        playboardProvider.overrideWithValue(playboardLocal),
+        playboardLocalProvider.overrideWithValue(playboardLocal),
       ],
       child: Portal(child: app),
     ),
