@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:game_tetris/widgets/buttons/game_button.dart';
 import 'package:game_tetris/widgets/buttons/models/buttons_params.dart';
 import 'package:game_tetris/widgets/theme_setting_bar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeScreen extends HookConsumerWidget {
@@ -35,15 +36,13 @@ class HomeScreen extends HookConsumerWidget {
           GameButton(
             color: ButtonColors.green,
             child: const Text('Single Mode'),
-            onPressed: () {
-            },
+            onPressed: () => context.go('/s_mode'),
           ),
           const SizedBox(height: 20),
           GameButton(
             color: ButtonColors.red,
             child: const Text('Online Mode'),
-            onPressed: () {
-            },
+            onPressed: () => context.go('/o_mode'),
           ),
           const ThemeSettingBar(),
         ],
