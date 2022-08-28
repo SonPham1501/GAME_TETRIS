@@ -3,49 +3,46 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:game_tetris/material/app_setting/app_setting_controller.dart';
 import 'package:game_tetris/widgets/buttons/game_button.dart';
 import 'package:game_tetris/widgets/buttons/models/buttons_params.dart';
 import 'package:game_tetris/widgets/theme_setting_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import 'controller/home_controller.dart';
-
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(counterProvider.select((value) => value.count));
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text(count.toString())),
-          const SizedBox(height: 20),
+          Text.rich(
+            TextSpan(
+              text: 'Game ',
+              children: [
+                TextSpan(
+                  text: 'Tetris',
+                  style: Theme.of(context).textTheme.headline6!.copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ],
+              style: Theme.of(context).textTheme.headline6,
+            ),
+          ),
+          const SizedBox(height: 32),
           GameButton(
             color: ButtonColors.green,
-            child: const Text('Increment'),
+            child: const Text('Single Mode'),
             onPressed: () {
-              ref.read(counterProvider).increment();
-            },
-          ),
-          const SizedBox(height: 20),
-          GameButton(
-            color: ButtonColors.blue,
-            child: const Text('Refesh'),
-            onPressed: () {
-              ref.refresh(counterProvider);
             },
           ),
           const SizedBox(height: 20),
           GameButton(
             color: ButtonColors.red,
-            child: const Text('Phạm Thế Sơn'),
+            child: const Text('Online Mode'),
             onPressed: () {
-              final bool isDark = ref.watch(appSettingControllerProvider.select((value) => value.isDarkTheme));
-              ref.read(appSettingControllerProvider).isDarkTheme = !isDark;
             },
           ),
           const ThemeSettingBar(),
