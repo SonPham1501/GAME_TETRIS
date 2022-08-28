@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.game_tetris">
+    package="com.son.app.game_tetris">
    <application
-        android:label="game_tetris"
+        android:label="Game Tetris"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
