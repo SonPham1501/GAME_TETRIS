@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../material/briks.dart';
+import '../../material/bricks/briks.dart';
 import '../../widgets/gamer/gamer.dart';
 
 ///the matrix of player content

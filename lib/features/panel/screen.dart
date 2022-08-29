@@ -3,8 +3,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as v;
-
-import '../../material/briks.dart';
+import '../../material/bricks/briks.dart';
 import '../../widgets/gamer/gamer.dart';
 import 'player_panel.dart';
 import 'status_panel.dart';

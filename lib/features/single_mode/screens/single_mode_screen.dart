@@ -10,7 +10,7 @@ class SingleModeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final screenW = size.width * 0.8;
+    final screenW = size.width;
     return WillPopScope(
       onWillPop: () async {
         context.go('/');

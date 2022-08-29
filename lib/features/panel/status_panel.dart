@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../material/briks.dart';
+import '../../material/bricks/briks.dart';
 import '../../widgets/gamer/block.dart';
 import '../../widgets/gamer/gamer.dart';
 

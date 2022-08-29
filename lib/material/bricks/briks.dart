@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../widgets/gamer/gamer.dart';
+import '../../../widgets/gamer/gamer.dart';
 
 const _COLOR_NORMAL = Colors.black87;
 
