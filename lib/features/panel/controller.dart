@@ -208,7 +208,7 @@ class LeftController extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         SystemButtonGroup(),
-        Expanded(
+        const Expanded(
           child: Center(
             child: DropButton(),
           ),

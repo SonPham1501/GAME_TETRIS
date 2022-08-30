@@ -80,7 +80,7 @@ class GameButton extends HookConsumerWidget {
                 brightness: _brightness,
                 edge: 5,
                 thinkness: 2 + value * 1,
-                elevation: 5 + value * 5
+                elevation: 5 + value * 5,
               ),
               child: IconTheme(
                 data: IconThemeData(

@@ -49,9 +49,9 @@ class _NextBlock extends StatelessWidget {
         data[i][j] = next[i][j];
       }
     }
-    return Column(
+    return Row(
       children: data.map((list) {
-        return Row(
+        return Column(
           children: list.map((b) {
             return b == 1 ? const Brik.normal() : const Brik.empty();
           }).toList(),

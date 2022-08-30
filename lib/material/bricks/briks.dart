@@ -1,12 +1,14 @@
-// ignore_for_file: constant_identifier_names, use_key_in_widget_constructors
+
+// ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:game_tetris/widgets/buttons/game_button.dart';
 
-import '../../../widgets/gamer/gamer.dart';
+import '../../../../widgets/gamer/gamer.dart';
 
 const _COLOR_NORMAL = Colors.black87;
 
-const _COLOR_NULL = Colors.black12;
+const _COLOR_NULL = Colors.transparent;
 
 const _COLOR_HIGHLIGHT = Color(0xFF560000);
 
@@ -54,13 +56,19 @@ class Brik extends StatelessWidget {
     final width = BrikSize.of(context).size.width;
     return SizedBox.fromSize(
       size: BrikSize.of(context).size,
-      child: Container(
-        margin: EdgeInsets.all(0.05 * width),
-        padding: EdgeInsets.all(0.1 * width),
-        decoration: BoxDecoration(
-            border: Border.all(width: 0.10 * width, color: color)),
-        child: Container(
-          color: color,
+      child: Padding(
+        padding: EdgeInsets.all(0.05 * width),
+        child: CustomPaint(
+          painter: BorderGamePainter(
+            color: color,
+            brightness: Theme.of(context).brightness,
+            edge: 5,
+            thinkness: 2,
+            elevation: 5,
+          ),
+          child: Container(
+            decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(10)),
+          ),
         ),
       ),
     );

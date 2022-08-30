@@ -25,7 +25,7 @@ class Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //play panel need 60%
-    final playerPanelWidth = width * 0.6;
+    final playerPanelWidth = width * 0.7;
     return Shake(
       shake: GameState.of(context).states == GameStates.drop,
       child: SizedBox(
