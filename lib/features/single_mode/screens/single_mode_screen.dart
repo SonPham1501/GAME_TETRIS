@@ -27,6 +27,7 @@ class SingleModeScreen extends ConsumerWidget {
                 children: [
                   Screen(width: screenW),
                   const Expanded(child: GameController()),
+                  SizedBox(height: MediaQuery.of(context).size.height * .07),
                 ],
               ),
             ),
