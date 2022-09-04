@@ -18,11 +18,16 @@ class SingleModeScreen extends StatelessWidget {
       },
       child: Game(
         child: Scaffold(
-          body: Column(
-            children: [
-              Screen(width: screenW),
-              const GameController(),
-            ],
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                children: [
+                  Screen(width: screenW),
+                  const Expanded(child: GameController()),
+                ],
+              ),
+            ),
           ),
         ),
       ),

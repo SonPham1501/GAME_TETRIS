@@ -100,7 +100,7 @@ class _GameStatusState extends State<_GameStatus> {
   Widget build(BuildContext context) {
     return Row(
       children: const <Widget>[
-        Text('Cần thêm')
+        Expanded(child: Text('Cần thêm'))
         // IconSound(enable: GameState.of(context).muted),
         // const SizedBox(width: 4),
         // IconPause(enable: GameState.of(context).states == GameStates.paused),

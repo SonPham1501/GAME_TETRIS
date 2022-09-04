@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, unused_element
 
 import 'dart:async';
 
@@ -12,14 +12,21 @@ class GameController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: Row(
-        children: const <Widget>[
-          Expanded(child: LeftController()),
-          Expanded(child: DirectionController()),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 15, left: MediaQuery.of(context).size.width * .15),
+          child: const SystemButtonGroup(),
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const <Widget>[
+            Expanded(child: LeftController()),
+            Expanded(child: DirectionController()),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -39,7 +46,6 @@ class DirectionController extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
-        SizedBox.fromSize(size: _DIRECTION_BUTTON_SIZE * 2.8),
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -83,41 +89,30 @@ class DirectionController extends StatelessWidget {
 }
 
 class SystemButtonGroup extends StatelessWidget {
-  static const _systemButtonColor = Color(0xFF2dc421);
 
   const SystemButtonGroup({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        _Description(
-          text: 'Sounds',
-          child: _Button(
-              size: _SYSTEM_BUTTON_SIZE,
-              color: _systemButtonColor,
-              enableLongPress: false,
-              onTap: () {
-                Game.of(context).soundSwitch();
-              }),
-        ),
         _Description(
           text: 'Pause/Resume',
           child: _Button(
               size: _SYSTEM_BUTTON_SIZE,
-              color: _systemButtonColor,
+              color: const Color(0xFFFFCD06),
               enableLongPress: false,
               onTap: () {
                 Game.of(context).pauseOrResume();
               }),
         ),
+        const SizedBox(width: 10),
         _Description(
-          text: 'Seset',
+          text: 'Reset',
           child: _Button(
               size: _SYSTEM_BUTTON_SIZE,
               enableLongPress: false,
-              color: Colors.red,
+              color: const Color(0xFFED701E),
               onTap: () {
                 Game.of(context).reset();
               }),
@@ -133,18 +128,18 @@ class LeftController extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        const SystemButtonGroup(),
-        const SizedBox(height: 20),
-        Expanded(
-          child: Center(
-            child: GameButton(
-              color: ButtonColors.red,
-              size: ButtonSize.square,
-              child: const Text('D'),
-              onPressed: () => Game.of(context).drop(),
-            ),
+        GameButton(
+          color: ButtonColors.red,
+          size: ButtonSize.square,
+          child: Image.asset(
+            'assets/images/down-arrow.png',
+            color: Colors.white,
+            width: 20,
+            height: 20,
           ),
+          onPressed: () => Game.of(context).drop(),
         )
       ],
     );
@@ -222,7 +217,9 @@ class _Description extends StatelessWidget {
     }
     return DefaultTextStyle(
       child: widget,
-      style: const TextStyle(fontSize: 12, color: Colors.black),
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+        fontSize: 10,
+      ),
     );
   }
 }

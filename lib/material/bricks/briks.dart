@@ -6,7 +6,7 @@ import 'package:game_tetris/widgets/buttons/game_button.dart';
 
 import '../../../../widgets/gamer/gamer.dart';
 
-const _COLOR_NORMAL = Colors.black87;
+const _COLOR_NORMAL = Colors.black54;
 
 const _COLOR_NULL = Colors.transparent;
 

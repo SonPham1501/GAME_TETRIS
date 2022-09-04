@@ -36,10 +36,7 @@ class Screen extends StatelessWidget {
           child: Row(
             children: <Widget>[
               PlayerPanel(width: playerPanelWidth),
-              SizedBox(
-                width: width - playerPanelWidth,
-                child: const StatusPanel(),
-              )
+              const Expanded(child: StatusPanel())
             ],
           ),
         ),

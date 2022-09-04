@@ -24,6 +24,7 @@ class PlayerPanel extends StatelessWidget {
         padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Stack(
           children: <Widget>[
@@ -62,10 +63,10 @@ class _GameUninitialized extends StatelessWidget {
       return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const <Widget>[
+          children: <Widget>[
             Text(
               "Start",
-              style: TextStyle(fontSize: 20),
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(fontSize: 16),
             ),
           ],
         ),
