@@ -4,6 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:game_tetris/material/audios/button_audio_controller.dart';
 import 'package:game_tetris/widgets/gamer/block.dart';
 
 ///the height of game pad
@@ -25,8 +27,9 @@ enum GameStates {
 
 class Game extends StatefulWidget {
   final Widget child;
+  final WidgetRef ref;
 
-  const Game({Key? key, required this.child}) : super(key: key);
+  const Game({Key? key, required this.child, required this.ref}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -57,6 +60,8 @@ const _SPEED = [
 ];
 
 class GameControl extends State<Game> with RouteAware {
+  late final buttonAudioController = widget.ref.read(buttonAudioControllerProvider);
+
   GameControl() {
     //inflate game pad data
     for (int i = 0; i < GAME_PAD_MATRIX_H; i++) {
@@ -114,6 +119,7 @@ class GameControl extends State<Game> with RouteAware {
       if (next != null && next.isValidInMatrix(_data)) {
         _current = next;
         // _sound.rotate();
+        buttonAudioController.rotate();
       }
     }
     setState(() {});
@@ -127,6 +133,7 @@ class GameControl extends State<Game> with RouteAware {
       if (next != null && next.isValidInMatrix(_data)) {
         _current = next;
         // _sound.move();
+        buttonAudioController.move();
       }
     }
     setState(() {});
@@ -140,6 +147,7 @@ class GameControl extends State<Game> with RouteAware {
       if (next != null && next.isValidInMatrix(_data)) {
         _current = next;
         // _sound.move();
+        buttonAudioController.move();
       }
     }
     setState(() {});
@@ -155,7 +163,7 @@ class GameControl extends State<Game> with RouteAware {
           setState(() {});
           await Future.delayed(const Duration(milliseconds: 100));
           _mixCurrentIntoData(mixSound: () {});
-          // _mixCurrentIntoData(mixSound: _sound.fall);
+          _mixCurrentIntoData(mixSound: buttonAudioController.fall);
           break;
         }
       }
@@ -172,6 +180,7 @@ class GameControl extends State<Game> with RouteAware {
         _current = next;
         if (enableSounds) {
           // _sound.move();
+          buttonAudioController.move();
         }
       } else {
         _mixCurrentIntoData();
@@ -202,7 +211,7 @@ class GameControl extends State<Game> with RouteAware {
     if (clearLines.isNotEmpty) {
       setState(() => _states = GameStates.clear);
 
-      // _sound.clear();
+      buttonAudioController.clear();
 
       for (int count = 0; count < 5; count++) {
         for (var line in clearLines) {
@@ -299,6 +308,7 @@ class GameControl extends State<Game> with RouteAware {
       return;
     }
     // _sound.start();
+    buttonAudioController.start();
     _states = GameStates.reset;
     () async {
       int line = GAME_PAD_MATRIX_H;

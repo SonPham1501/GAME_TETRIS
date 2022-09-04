@@ -3,12 +3,13 @@ import 'package:game_tetris/features/panel/controller.dart';
 import 'package:game_tetris/features/panel/screen.dart';
 import 'package:game_tetris/widgets/gamer/gamer.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SingleModeScreen extends StatelessWidget {
+class SingleModeScreen extends ConsumerWidget {
   const SingleModeScreen({ Key? key }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
     final screenW = size.width;
     return WillPopScope(
@@ -17,6 +18,7 @@ class SingleModeScreen extends StatelessWidget {
         return false;
       },
       child: Game(
+        ref: ref,
         child: Scaffold(
           body: SafeArea(
             child: Padding(
